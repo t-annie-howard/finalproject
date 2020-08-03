@@ -44,12 +44,12 @@
     }).addTo(map);
 
 
-    $.getJSON("Hardship_Index_Gentrification_Index.geojson", function(data){
+    $.getJSON("HardshipGentrification.geojson", function(data){
         L.geoJson(data, {
             style: function(feature){
         var conditionalColor,
             hardship = feature.properties.HI;
-            gentrification = feature.properties.Index.Number;
+            gentrification = feature.properties.GentrificationNumber;
         if (hardship >= 75) && (gentrification = 9) conditionalColor = "#574820";
         else if (hardship > 75) && (gentrification = 8) conditionalColor = "#846d42";
         else if (hardship > 75) && (gentrification = 7) conditionalColor = "#9a937a";
@@ -72,7 +72,6 @@
         else if (hardship < 25) && (gentrification = 5) conditionalColor = "#cdf768";
         else if (hardship < 25) && (gentrification = 2) conditionalColor = "#f7f768";
         else if (hardship < 25) && (gentrification = 1) conditionalColor = "#f6f76f";
-        else if (hardship > 0) conditionalColor = "#234567";
         else conditionalColor = "#555666"
         return {    color: "#996184",
                     weight: 1,
