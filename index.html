@@ -47,7 +47,7 @@
     $.getJSON("HardshipGentrification.geojson", function(data){
         L.geoJson(data, {
             style: function(feature){
-        var conditionalColor,
+            var conditionalColor,
             hardship = feature.properties.HI;
             gentrification = feature.properties.GentrificationNumber;
         if (hardship >= 75) && (gentrification = 9) conditionalColor = "#574820";
@@ -78,10 +78,10 @@
                     fillColor: conditionalColor,
                     fillOpacity: .6 };
                 },
-        onEachFeature: function (feature, layer){
-            layer.bindPopup( "Neighborhood: " + feature.properties.CA + "<br/>" + "Hardship Index Score: " + feature.properties.HI)
+    //    onEachFeature: function (feature, layer){
+      //      layer.bindPopup( "Neighborhood: " + feature.properties.CA + "<br/>" + "Hardship Index Score: " + feature.properties.HI + "br/" + "Gentrification Index" + feature.properties.GentrificationNumber )
         }
-             }  ).addTo(map).bringToBack();
+        //     }  ).addTo(map).bringToBack();
     });
 
 
