@@ -77,7 +77,7 @@
                     fillOpacity: .6 };
                 },
        onEachFeature: function (feature, layer){
-           layer.bindPopup( "Neighborhood: " + feature.properties.CA + "<br/>" + "Hardship Index Score: " + feature.properties.HI + "br/" + "Gentrification Index" + feature.properties.GentrificationNumber )
+           layer.bindPopup( "Neighborhood: " + feature.properties.CA + "<br/>" + "Hardship Index Score: " + feature.properties.HI + "<br/>" + "Gentrification Index" + feature.properties.GentrificationNumber )
         }
         }  ).addTo(map).bringToBack();
     });
