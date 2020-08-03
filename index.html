@@ -44,12 +44,13 @@
     }).addTo(map);
 
 
-    $.getJSON("ChicagoHardshipIndex.geojson", function(data){
+    $.getJSON("Hardship_Index_Gentrification_Index.geojson", function(data){
         L.geoJson(data, {
             style: function(feature){
         var conditionalColor,
             hardship = feature.properties.HI;
-        if (hardship > 80) conditionalColor = "#449382";
+            gentrification = feature.properties.Index.Number;
+        if (hardship > 80) && (gentrification == 8) conditionalColor = "#449382";
         else if (hardship > 60) conditionalColor = "#345345";
         else if (hardship > 40) conditionalColor = "#567890";
         else if (hardship > 20) conditionalColor = "#123456";
