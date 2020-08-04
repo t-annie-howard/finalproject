@@ -25,14 +25,21 @@
 <body>
 
 
-<div id = "map" ></div>
+<div id = "map2" ></div>
 
 <p></p>
 <p></p>
 <p></p>
 <p></p>
 
-<div id = "map2"></div>
+<div id = "map3"></div>
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+
+<div id = "map"></div>
 
 <script>
 
@@ -42,25 +49,36 @@
 
     var map2 = L.map('map2').setView([41.86, -87.66], 10);
 
+
+    var map3 = L.map('map3').setView([41.86, -87.66], 10);
+
     // add a base layer
 
     var Stamen_TonerLite = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
         attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        subdomains: 'abcd',
-        minZoom: 0,
-        maxZoom: 20,
-        ext: 'png'
-    }).addTo(map);
+                subdomains: 'abcd',
+                minZoom: 0,
+                maxZoom: 20,
+                ext: 'png'
+            }).addTo(map);
 
 
-       var Stamen_TonerLite = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
+    var Stamen_TonerLite = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
         attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        subdomains: 'abcd',
-        minZoom: 0,
-        maxZoom: 20,
-        ext: 'png'
-    }).addTo(map2);
+                subdomains: 'abcd',
+                minZoom: 0,
+                maxZoom: 20,
+                ext: 'png'
+            }).addTo(map2);
 
+
+    var Stamen_TonerLite = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
+        attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                subdomains: 'abcd',
+                minZoom: 0,
+                maxZoom: 20,
+                ext: 'png'
+            }).addTo(map3);
 
     $.getJSON("HardshipGentrification.geojson", function(data){
         L.geoJson(data, {
@@ -126,6 +144,28 @@
                 layer.bindPopup( "Neighborhood: " + feature.properties.CA + "<br/>" + "Gentrification Index: " + feature.properties.GentrificationNumber )
             }
         }  ).addTo(map2).bringToBack();
+    });
+
+
+    $.getJSON("HardshipGentrification.geojson", function(data){
+        L.geoJson(data, {
+            style: function(feature){
+                var conditionalColor,
+                    hardship = feature.properties.HI;
+                if (hardship >= 75) conditionalColor = "#525252";
+                else if (hardship < 75 && hardship >= 50) conditionalColor = "#969696";
+                else if (hardship < 50 && hardship >= 25) conditionalColor = "#cccccc";
+                else if (hardship < 25) conditionalColor = "#f7f7f7";
+                else conditionalColor = "#555666";
+                return {    color: "#996184",
+                    weight: 1,
+                    fillColor: conditionalColor,
+                    fillOpacity: .6 };
+            },
+            onEachFeature: function (feature, layer){
+                layer.bindPopup( "Neighborhood: " + feature.properties.CA + "<br/>" + "Hardship Index: " + feature.properties.HI )
+            }
+        }  ).addTo(map3).bringToBack();
     });
     
 
