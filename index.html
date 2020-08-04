@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="english">
 <head>
-    <title>Annie Howard Leaflet Map UPP 465</title>
+    <title>Annie Howard Final Map UPP 465</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400&display=swap" rel="stylesheet">
 
@@ -56,7 +56,7 @@
 
 <center><h1>Map Three: Combined Gentrification and Hardship Index</h1></center>
 <div id = "map"></div>
-<p>Finally, this map combines both of the above maps using a color multiplier. While I'm still not exactly sure how to make any definitive claims about what it reveals, I find one interesting distinction in the adjacent Bridgeport and Armour Square communities, which I've highlighted with a circle above. </p>
+<p>Finally, this map combines both of the above maps using a color multiplier. While I'm still not exactly sure how to make any definitive claims about what it reveals, I find one interesting distinction in the adjacent Bridgeport and Armour Square communities, circled on the map above. These two adjacent community areas are rather interesting to compare on the combined hardship and gentrification map. On the gentrification map, each is listed as a category 5 area, meaning the community had seen positive changes in a number of indicators without resulting in gentrification. According to the Voorhees Center, Logan Square was the only other community of the city's 77 in a similar position according to their analysis. However, the hardship numbers are quite different: Bridgeport had a hardship score of just 43, compared to 82 for Armour Square. These differences raise an interesting question: how can both communities have experienced positive economic outcomes over the last 40 years without gentrification, even as one has significantly worse economic indicators according to the hardship data? Unraveling the fine distinctions between these adjacent communities could make for a valuable comparative project, one I'm eager to consider as I move down to Bridgeport and begin to get a better understanding of the on-the-ground realities of the area. </p>
 <script>
 
     // initialize your map here
@@ -228,9 +228,8 @@ legend.addTo(map3);
         color: 'blue',
         fillColor: '#f03',
         fillOpacity: 0.2,
-        radius: 200,
-    }).addTo(map3).bindPopup("These two adjacent community areas, Bridgeport and Armour Square, are rather interesting to compare on the combined hardship and gentrification map. On the gentrification map, each is listed as a category 5 area, meaning the community had seen positive changes in a number of indicators without resulting in gentrification. According to the Voorhees Center, Logan Square was the only other community of the city's 77 in a similar position according to their analysis. However, the hardship numbers are quite different: Bridgeport had a hardship score of just 43, compared to 82 for Armour Square. These differences raise an interesting question: how can both communities have experienced positive economic outcomes over the last 40 years without gentrification, even as one has significantly worse economic indicators according to the hardship data? Unraveling the fine distinctions between these adjacent communities could make for a valuable comparative project, one I'm eager to consider as I move down to Bridgeport and begin to get a better understanding of the on-the-ground realities of the area.");
-
+        radius: 2000,
+    }).addTo(map3)
 
 </script>
 
