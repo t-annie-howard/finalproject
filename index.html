@@ -30,7 +30,7 @@
 <script>
 
     // initialize your map here
-    var map = L.map('map').setView([41.973, -87.67], 15);
+    var map = L.map('map').setView([41.973, -87.67], 12);
 
 
     // add a base layer
@@ -50,34 +50,34 @@
             var conditionalColor,
             hardship = feature.properties.HI;
             gentrification = feature.properties.GentrificationNumber;
-        if (hardship >= 75) && (gentrification == 9) conditionalColor = "#574820";
-        else if (hardship >= 75) && (gentrification == 8) conditionalColor = "#846d42";
-        else if (hardship >= 75) && (gentrification == 7) conditionalColor = "#9a937a";
-        else if (hardship >= 75) && (gentrification == 4) conditionalColor = "#426284";
-        else if (hardship >= 75) && (gentrification == 3) conditionalColor = "#7a95a4";
-        else if (hardship < 75 && >= 50) && (gentrification == 9) conditionalColor = "#9d8965";
-        else if (hardship < 75 && >= 50) && (gentrification == 8) conditionalColor = "#d6b981";
-        else if (hardship < 75 && >= 50) && (gentrification == 7) conditionalColor = "#f3e9c9";
-        else if (hardship < 75 && >= 50) && (gentrification == 5) conditionalColor = "#81abd7";
-        else if (hardship < 75 && >= 50) && (gentrification == 4) conditionalColor = "#c9ecff";
-        else if (hardship < 50 && >= 25) && (gentrification == 6) conditionalColor = "#f9f4e5";
-        else if (hardship < 50 && >= 25) && (gentrification == 5) conditionalColor = "#d0ebc2";
-        else if (hardship < 50 && >= 25) && (gentrification == 4) conditionalColor = "#eeffe5";
-        else if (hardship < 50 && >= 25) && (gentrification == 3) conditionalColor = "#e5f6ff";
-        else if (hardship < 50 && >= 25) && (gentrification == 2) conditionalColor = "#ffffe5";
-        else if (hardship < 50 && >= 25) && (gentrification == 1) conditionalColor = "#ffffc7";
-        else if (hardship < 25) && (gentrification == 6) conditionalColor = "#85c763";
-        else if (hardship < 25) && (gentrification == 5) conditionalColor = "#cdf768";
-        else if (hardship < 25) && (gentrification == 2) conditionalColor = "#f7f768";
-        else if (hardship < 25) && (gentrification == 1) conditionalColor = "#f6f76f";
-        else conditionalColor = "#555666";
-        return {    color: "#996184",
+                if (hardship >= 75 && gentrification == 9) conditionalColor = "#574820";
+                else if (hardship >= 75 && gentrification == 8) conditionalColor = "#846d42";
+                else if (hardship >= 75 && gentrification == 7) conditionalColor = "#9a937a";
+                else if (hardship >= 75 && gentrification == 4) conditionalColor = "#426284";
+                else if (hardship >= 75 && gentrification == 3) conditionalColor = "#7a95a4";
+                else if (hardship < 75 && hardship >= 50 && gentrification == 9) conditionalColor = "#9d8965";
+                else if (hardship < 75 && hardship >= 50 && gentrification == 8) conditionalColor = "#d6b981";
+                else if (hardship < 75 && hardship >= 50 && gentrification == 7) conditionalColor = "#f3e9c9";
+                else if (hardship < 75 && hardship >= 50 && gentrification == 5) conditionalColor = "#81abd7";
+                else if (hardship < 75 && hardship >= 50 && gentrification == 4) conditionalColor = "#c9ecff";
+                else if (hardship < 50 && hardship >= 25 && gentrification == 6) conditionalColor = "#f9f4e5";
+                else if (hardship < 50 && hardship >= 25 && gentrification == 5) conditionalColor = "#d0ebc2";
+                else if (hardship < 50 && hardship >= 25 && gentrification == 4) conditionalColor = "#eeffe5";
+                else if (hardship < 50 && hardship >= 25 && gentrification == 3) conditionalColor = "#e5f6ff";
+                else if (hardship < 50 && hardship >= 25 && gentrification == 2) conditionalColor = "#ffffe5";
+                else if (hardship < 50 && hardship >= 25 && gentrification == 1) conditionalColor = "#ffffc7";
+                else if (hardship < 25 && gentrification == 6) conditionalColor = "#85c763";
+                else if (hardship < 25 && gentrification == 5) conditionalColor = "#cdf768";
+                else if (hardship < 25 && gentrification == 2) conditionalColor = "#f7f768";
+                else if (hardship < 25 && gentrification == 1) conditionalColor = "#f6f76f";
+                else conditionalColor = "#555666";
+            return {    color: "#996184",
                     weight: 1,
                     fillColor: conditionalColor,
                     fillOpacity: .6 };
                 },
        onEachFeature: function (feature, layer){
-           layer.bindPopup( "Neighborhood: " + feature.properties.CA + "<br/>" + "Hardship Index Score: " + feature.properties.HI + "<br/>" + "Gentrification Index" + feature.properties.GentrificationNumber )
+           layer.bindPopup( "Neighborhood: " + feature.properties.CA + "<br/>" + "Hardship Index Score: " + feature.properties.HI + "<br/>" + "Gentrification Index: " + feature.properties.GentrificationNumber )
         }
         }  ).addTo(map).bringToBack();
     });
