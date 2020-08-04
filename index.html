@@ -26,28 +26,37 @@
 
 <div class = "intro">
 <h1>Comparing Chicago's Hardship Index and Gentrification Index</h1>
-<h3></h3>
-
+<h3>An analysis by Annie Howard</h3>
+<h3>UPP 465</h3>
 
 </div>
 
+<div class = "p">
+<p>For this project, I was curious to try and use two similar but distinct maps that I've looked at a bit during this summer. The first was the <a href="https://voorheescenter.uic.edu/what-we-do/areas-of-research/gentrification-index/" target="blank"> Gentrification Index</a>, created at CUPPA's Voorhees Center in 2014, which breaks Chicago's neighborhoods into three broad buckets: stable, positive, or negative changes. Within those broad categories are further distinctions, meant to represent the direction in which a given community area has gone between 1970 and 2010. Through the use of different indicators drawn Census data across the previous four decades, the map helps to represent the city's increasing polarities, with an increasing number of neighborhoods further above and below the city's mean socioeconomic indicators.</p>
+<p>By contrast, the Hardship Index is drawn from the city of Chicago's <a href="https://data.cityofchicago.org/Health-Human-Services/Hardship-Index/5kdt-irec" target="blank">data portal</a>, using a number of economic indicators similar to those used in the Gentrification Index. However, where the Gentrification Index is drawn over the course of 40 years, the Hardship Index is drawn from the years 2008 to 2012, providing a more narrow, focused snapshot of the city's community areas, rather than their overall trajectory. While many of the community areas have looked broadly similar over the last 40 years, I wanted to ask: could we see anything distinct in bringing both datasets together?</p>
+<p>In some ways, my method of analysis was rather primitive. To analyze the Hardship Index, I used a four-tone white-to-grey color gradient, dividing the 100-unit index into 25-point buckets. (If if were to do this again, I might try to make a greater number of gradients on this spectrum, but just didn't want to have to deal with too many variables in my map making.) I then used the existing colors assigned to the Gentrification Index, and used the color multiply function on a website called <a href="http://colorblendy.com/" target="blank">Color Blendy</a> to look for distinctions between the different combinations of Gentrification Index and Hardship Index scores. I'm not sure if there are any major conclusions I can draw from these maps in combination without taking more time to look at them more closely (and perhaps find more discrete ways of combining them, rather than simply multiplying together colors), but it was still a useful exercise to at least feel more comfortable using Leaflet. For example, I was able to use if/else statements with multiple clauses, as well as figuring out how to add a legend to my maps. With more practice, I want to use Mapbox to combine the different layers of my map onto one screen, so you can easily toggle between the different views, making it easier to see the changes.</p>
+<p>I think there will be interesting opportunities to update these maps with new Census data in the next few years, and I'll be curious to see what groups like the Voorhees Center and the Great Cities Institute do with updated data. While I know there are improvements that I'd like to make to these maps, I'm also going to give myself time to think more about my methodology, and try to imagine a better approach to this data that better accomplishes my goal of comparing both long- and short-term trends for different Chicago communities. This comparative approach could be quite valuable, and I hope to build upon this map in future projects and see what else I can find.</p>
 
+</div>
+<center><h1>Map One: Gentrification Index</h1></center>
 <div id = "map2" ></div>
 
-<p></p>
+<p>This map is drawn from the original Voorhees Center map, using the same color gradients and labels for each community area.</p>
 <p></p>
 <p></p>
 <p></p>
 
+<center><h1>Map Two: Hardship Index</h1></center>
 <div id = "map3"></div>
 
-<p></p>
+<p>This map is a simple four-category splitting of the city's 1oo-point Hardship Index, illustrated using a monochrome color pallette to make the next map most effective.</p>
 <p></p>
 <p></p>
 <p></p>
 
+<center><h1>Map Three: Combined Gentrification and Hardship Index</h1></center>
 <div id = "map"></div>
-
+<p>Finally, this map combines both of the above maps using a color multiplier. While I'm still not exactly sure how to make any definitive claims about what it reveals, I find one interesting distinction in the adjacent Bridgeport and Armour Square communities, which I've highlighted with a circle above. </p>
 <script>
 
     // initialize your map here
@@ -93,29 +102,6 @@
             var conditionalColor,
             hardship = feature.properties.HI,
             gentrification = feature.properties.GentrificationNumber;
-               /*
-                if (hardship > 75 && gentrification == 9) conditionalColor = "#574820";
-                else if (hardship > 75 && gentrification == 8) conditionalColor = "#846d42";
-                else if (hardship > 75 && gentrification == 7) conditionalColor = "#9a937a";
-                else if (hardship > 75 && gentrification == 4) conditionalColor = "#426284";
-                else if (hardship > 75 && gentrification == 3) conditionalColor = "#7a95a4";
-                else if (hardship <= 75 && hardship > 50 && gentrification == 9) conditionalColor = "#9d8965";
-                else if (hardship <= 75 && hardship > 50 && gentrification == 8) conditionalColor = "#d6b981";
-                else if (hardship <= 75 && hardship > 50 && gentrification == 7) conditionalColor = "#f3e9c9";
-                else if (hardship <= 75 && hardship > 50 && gentrification == 5) conditionalColor = "#81abd7";
-                else if (hardship <= 75 && hardship > 50 && gentrification == 4) conditionalColor = "#c9ecff";
-                else if (hardship <= 50 && hardship > 25 && gentrification == 6) conditionalColor = "#f9f4e5";
-                else if (hardship <= 50 && hardship > 25 && gentrification == 5) conditionalColor = "#d0ebc2";
-                else if (hardship <= 50 && hardship > 25 && gentrification == 4) conditionalColor = "#eeffe5";
-                else if (hardship <= 50 && hardship > 25 && gentrification == 3) conditionalColor = "#e5f6ff";
-                else if (hardship <= 50 && hardship > 25 && gentrification == 2) conditionalColor = "#ffffe5";
-                else if (hardship <= 50 && hardship > 25 && gentrification == 1) conditionalColor = "#ffffc7";
-                else if (hardship <= 25 && gentrification == 6) conditionalColor = "#85c763";
-                else if (hardship <= 25 && gentrification == 5) conditionalColor = "#cdf768";
-                else if (hardship <= 25 && gentrification == 2) conditionalColor = "#f7f768";
-                else if (hardship <= 25 && gentrification == 1) conditionalColor = "#f6f76f";
-                */
-                
                 if (hardship > 75 && gentrification == 9) conditionalColor = "#2c2416";
                 else if (hardship > 75 && gentrification == 8) conditionalColor = "#423721";
                 else if (hardship > 75 && gentrification == 7) conditionalColor = "#4d493d";
@@ -227,16 +213,23 @@ var legend = L.control({ position: "bottomleft" });
 
 legend.onAdd = function(map3) {
   var div = L.DomUtil.create("div", "legend");
-  div.innerHTML += "<h4>Gentrification Index</h4>";
-  div.innerHTML += '<i style="background: #f7f7f7"></i><span>0-25: Upper-Class</span><br>';
-  div.innerHTML += '<i style="background: #cccccc"></i><span>26-50: Middle-Clas</span><br>';
-  div.innerHTML += '<i style="background: #969696"></i><span>51-75: Poverty</span><br>';
-  div.innerHTML += '<i style="background: #525252"></i><span>76-100: Extreme Poverty</span><br>';
+  div.innerHTML += "<h4>Hardship Index</h4>";
+  div.innerHTML += '<i style="background: #f7f7f7"></i><span>0-25</span><br>';
+  div.innerHTML += '<i style="background: #cccccc"></i><span>26-50</span><br>';
+  div.innerHTML += '<i style="background: #969696"></i><span>51-75</span><br>';
+  div.innerHTML += '<i style="background: #525252"></i><span>76-100</span><br>';
 
   return div;
 };
 
 legend.addTo(map3);
+
+ var circle = L.circle([ 41.838263, -87.636752 ],{
+        color: 'blue',
+        fillColor: '#f03',
+        fillOpacity: 0.2,
+        radius: 200,
+    }).addTo(map3).bindPopup("These two adjacent community areas, Bridgeport and Armour Square, are rather interesting to compare on the combined hardship and gentrification map. On the gentrification map, each is listed as a category 5 area, meaning the community had seen positive changes in a number of indicators without resulting in gentrification. According to the Voorhees Center, Logan Square was the only other community of the city's 77 in a similar position according to their analysis. However, the hardship numbers are quite different: Bridgeport had a hardship score of just 43, compared to 82 for Armour Square. These differences raise an interesting question: how can both communities have experienced positive economic outcomes over the last 40 years without gentrification, even as one has significantly worse economic indicators according to the hardship data? Unraveling the fine distinctions between these adjacent communities could make for a valuable comparative project, one I'm eager to consider as I move down to Bridgeport and begin to get a better understanding of the on-the-ground realities of the area.");
 
 
 </script>
