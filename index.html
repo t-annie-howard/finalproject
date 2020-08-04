@@ -30,7 +30,7 @@
 <script>
 
     // initialize your map here
-    var map = L.map('map').setView([41.973, -87.67], 12);
+    var map = L.map('map').setView([41.973, -87.67], 10);
 
 
     // add a base layer
@@ -48,7 +48,7 @@
         L.geoJson(data, {
             style: function(feature){
             var conditionalColor,
-            hardship = feature.properties.HI;
+            hardship = feature.properties.HI,
             gentrification = feature.properties.GentrificationNumber;
                 if (hardship >= 75 && gentrification == 9) conditionalColor = "#574820";
                 else if (hardship >= 75 && gentrification == 8) conditionalColor = "#846d42";
@@ -71,18 +71,18 @@
                 else if (hardship < 25 && gentrification == 2) conditionalColor = "#f7f768";
                 else if (hardship < 25 && gentrification == 1) conditionalColor = "#f6f76f";
                 else conditionalColor = "#555666";
-            return {    color: "#996184",
-                    weight: 1,
-                    fillColor: conditionalColor,
-                    fillOpacity: .6 };
-                },
-       onEachFeature: function (feature, layer){
+                return {    color: "#996184",
+                            weight: 1,
+                            fillColor: conditionalColor,
+                            fillOpacity: .6 };
+                        },
+                onEachFeature: function (feature, layer){
            layer.bindPopup( "Neighborhood: " + feature.properties.CA + "<br/>" + "Hardship Index Score: " + feature.properties.HI + "<br/>" + "Gentrification Index: " + feature.properties.GentrificationNumber )
         }
         }  ).addTo(map).bringToBack();
     });
 
-/*
+
 
     $.getJSON("ChicagoHardshipIndex.geojson", function(data){
     L.geoJson(data, {
@@ -105,7 +105,7 @@
                 }
                     }  ).addTo(map).bringToBack();
                 }); 
-                */
+                
 </script>
 
 </body>
