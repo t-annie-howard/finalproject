@@ -27,11 +27,15 @@
 
 <div id = "map" ></div>
 
+<div id = "map2"></div>
+
 <script>
 
     // initialize your map here
     var map = L.map('map').setView([41.973, -87.67], 10);
 
+
+    var map = L.map('map2').setView([41.973, -87.67], 10);
 
     // add a base layer
 
@@ -42,6 +46,15 @@
         maxZoom: 20,
         ext: 'png'
     }).addTo(map);
+
+
+       var Stamen_TonerLite = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
+        attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        subdomains: 'abcd',
+        minZoom: 0,
+        maxZoom: 20,
+        ext: 'png'
+    }).addTo(map2);
 
 
     $.getJSON("HardshipGentrification.geojson", function(data){
@@ -84,28 +97,33 @@
 
 
 
-    $.getJSON("ChicagoHardshipIndex.geojson", function(data){
-    L.geoJson(data, {
-        style: function(feature){
-            var conditionalColor,
-            hardship = feature.properties.HI;
-                if ( hardship > 80 ) conditionalColor = "#006837";
-                else if ( hardship > 60 ) conditionalColor = "#31a354";
-                else if ( hardship > 40 ) conditionalColor = "#78c679";
-                else if ( hardship > 20 ) conditionalColor = "#c2e699";
-                else if ( hardship > 0 ) conditionalColor = "#ffffcc";
-                else conditionalColor = "#f7f7f7";  // no data
-                return {    color: "#999", 
-                            weight: 1, 
-                            fillColor: conditionalColor, 
-                            fillOpacity: .6 };
-                },
-                onEachFeature: function( feature, layer ){
-                    layer.bindPopup( "Neighborhood: " + feature.properties.CA + "<br/>" + "Hardship Index Score: " + feature.properties.HI )
-                }
-                    }  ).addTo(map).bringToBack();
-                }); 
-                
+    $.getJSON("HardshipGentrification.geojson", function(data){
+        L.geoJson(data, {
+            style: function(feature){
+                var conditionalColor,
+                    gentrification = feature.properties.GentrificationNumber;
+                if (gentrification == 1) conditionalColor = "#feff73";
+                else if (gentrification == 2) conditionalColor = "#ffffbe";
+                else if (gentrification == 3) conditionalColor = "#bee8ff";
+                else if (gentrification == 4) conditionalColor = "#6699ce";
+                else if (gentrification == 5) conditionalColor = "#d4ffbe";
+                else if (gentrification == 6) conditionalColor = "#89cd66";
+                else if (gentrification == 7) conditionalColor = "#f0e4be";
+                else if (gentrification == 8) conditionalColor = "#cdaa66";
+                else if (gentrification == 9) conditionalColor = "#887044";
+                else conditionalColor = "#555666";
+                return {    color: "#996184",
+                    weight: 1,
+                    fillColor: conditionalColor,
+                    fillOpacity: .6 };
+            },
+            onEachFeature: function (feature, layer){
+                layer.bindPopup( "Neighborhood: " + feature.properties.CA + "<br/>" + "Gentrification Index: " + feature.properties.GentrificationNumber )
+            }
+        }  ).addTo(map2).bringToBack();
+    });
+    
+
 </script>
 
 </body>
