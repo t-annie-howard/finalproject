@@ -37,7 +37,7 @@
 <script>
 
     // initialize your map here
-    var map = L.map('map').setView([41.973, -87.67], 10);
+    var map = L.map('map').setView([41.973, -87.67], 10); 
 
 
     var map2 = L.map('map2').setView([41.973, -87.67], 10);
@@ -100,7 +100,7 @@
         }  ).addTo(map).bringToBack();
     });
 
-
+  
 
     $.getJSON("HardshipGentrification.geojson", function(data){
         L.geoJson(data, {
@@ -128,6 +128,29 @@
         }  ).addTo(map2).bringToBack();
     });
     
+
+
+    /*Legend specific*/
+var legend = L.control({ position: "bottomleft" });
+
+legend.onAdd = function(map2) {
+  var div = L.DomUtil.create("div", "legend");
+  div.innerHTML += "<h4>Gentrification Index</h4>";
+  div.innerHTML += '<i style="background: #feff73"></i><span>1: No Change, Upper Class</span><br>';
+  div.innerHTML += '<i style="background: #ffffbe"></i><span>2: No Change, Middle Class</span><br>';
+  div.innerHTML += '<i style="background: #bee8ff"></i><span>3: No Change, Poverty</span><br>';
+  div.innerHTML += '<i style="background: #6699ce"></i><span>4: No Change, Extreme Poverty</span><br>';
+  div.innerHTML += '<i style="background: #d4ffbe"></i><span>5: Positive Change, Not Gentrification</span><br>';
+  div.innerHTML += '<i style="background: #89cd66"></i><span>6: Positive Change, Gentrification</span><br>';
+  div.innerHTML += '<i style="background: #f0e4be"></i><span>7: Negative Change, Mild Decline</span><br>';
+  div.innerHTML += '<i style="background: #cdaa66"></i><span>8: Negative Change, Moderate Decline</span><br>';
+  div.innerHTML += '<i style="background: #887044"></i><span>9: Negative Change, Serious Decline</span><br>';
+  
+  return div;
+};
+
+legend.addTo(map2);
+
 
 </script>
 
