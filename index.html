@@ -152,10 +152,10 @@
             style: function(feature){
                 var conditionalColor,
                     hardship = feature.properties.HI;
-                if (hardship >= 75) conditionalColor = "#525252";
-                else if (hardship < 75 && hardship >= 50) conditionalColor = "#969696";
-                else if (hardship < 50 && hardship >= 25) conditionalColor = "#cccccc";
-                else if (hardship < 25) conditionalColor = "#f7f7f7";
+                if (hardship > 75) conditionalColor = "#525252";
+                else if (hardship <= 75 && hardship > 50) conditionalColor = "#969696";
+                else if (hardship <= 50 && hardship > 25) conditionalColor = "#cccccc";
+                else if (hardship <= 25) conditionalColor = "#f7f7f7";
                 else conditionalColor = "#555666";
                 return {    color: "#996184",
                     weight: 1,
@@ -190,6 +190,22 @@ legend.onAdd = function(map2) {
 };
 
 legend.addTo(map2);
+
+
+var legend = L.control({ position: "bottomleft" });
+
+legend.onAdd = function(map3) {
+  var div = L.DomUtil.create("div", "legend");
+  div.innerHTML += "<h4>Gentrification Index</h4>";
+  div.innerHTML += '<i style="background: #f7f7f7"></i><span>0-25: Upper-Class</span><br>';
+  div.innerHTML += '<i style="background: #cccccc"></i><span>26-50: Middle-Clas</span><br>';
+  div.innerHTML += '<i style="background: #969696"></i><span>51-75: Poverty</span><br>';
+  div.innerHTML += '<i style="background: #525252"></i><span>76-100: Extreme Poverty</span><br>';
+
+  return div;
+};
+
+legend.addTo(map3);
 
 
 </script>
