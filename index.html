@@ -24,6 +24,13 @@
 </head>
 <body>
 
+<div class = "intro">
+<h1>Comparing Chicago's Hardship Index and Gentrification Index</h1>
+<h3></h3>
+
+
+</div>
+
 
 <div id = "map2" ></div>
 
@@ -86,31 +93,55 @@
             var conditionalColor,
             hardship = feature.properties.HI,
             gentrification = feature.properties.GentrificationNumber;
-                if (hardship >= 75 && gentrification == 9) conditionalColor = "#574820";
-                else if (hardship >= 75 && gentrification == 8) conditionalColor = "#846d42";
-                else if (hardship >= 75 && gentrification == 7) conditionalColor = "#9a937a";
-                else if (hardship >= 75 && gentrification == 4) conditionalColor = "#426284";
-                else if (hardship >= 75 && gentrification == 3) conditionalColor = "#7a95a4";
-                else if (hardship < 75 && hardship >= 50 && gentrification == 9) conditionalColor = "#9d8965";
-                else if (hardship < 75 && hardship >= 50 && gentrification == 8) conditionalColor = "#d6b981";
-                else if (hardship < 75 && hardship >= 50 && gentrification == 7) conditionalColor = "#f3e9c9";
-                else if (hardship < 75 && hardship >= 50 && gentrification == 5) conditionalColor = "#81abd7";
-                else if (hardship < 75 && hardship >= 50 && gentrification == 4) conditionalColor = "#c9ecff";
-                else if (hardship < 50 && hardship >= 25 && gentrification == 6) conditionalColor = "#f9f4e5";
-                else if (hardship < 50 && hardship >= 25 && gentrification == 5) conditionalColor = "#d0ebc2";
-                else if (hardship < 50 && hardship >= 25 && gentrification == 4) conditionalColor = "#eeffe5";
-                else if (hardship < 50 && hardship >= 25 && gentrification == 3) conditionalColor = "#e5f6ff";
-                else if (hardship < 50 && hardship >= 25 && gentrification == 2) conditionalColor = "#ffffe5";
-                else if (hardship < 50 && hardship >= 25 && gentrification == 1) conditionalColor = "#ffffc7";
-                else if (hardship < 25 && gentrification == 6) conditionalColor = "#85c763";
-                else if (hardship < 25 && gentrification == 5) conditionalColor = "#cdf768";
-                else if (hardship < 25 && gentrification == 2) conditionalColor = "#f7f768";
-                else if (hardship < 25 && gentrification == 1) conditionalColor = "#f6f76f";
+               /*
+                if (hardship > 75 && gentrification == 9) conditionalColor = "#574820";
+                else if (hardship > 75 && gentrification == 8) conditionalColor = "#846d42";
+                else if (hardship > 75 && gentrification == 7) conditionalColor = "#9a937a";
+                else if (hardship > 75 && gentrification == 4) conditionalColor = "#426284";
+                else if (hardship > 75 && gentrification == 3) conditionalColor = "#7a95a4";
+                else if (hardship <= 75 && hardship > 50 && gentrification == 9) conditionalColor = "#9d8965";
+                else if (hardship <= 75 && hardship > 50 && gentrification == 8) conditionalColor = "#d6b981";
+                else if (hardship <= 75 && hardship > 50 && gentrification == 7) conditionalColor = "#f3e9c9";
+                else if (hardship <= 75 && hardship > 50 && gentrification == 5) conditionalColor = "#81abd7";
+                else if (hardship <= 75 && hardship > 50 && gentrification == 4) conditionalColor = "#c9ecff";
+                else if (hardship <= 50 && hardship > 25 && gentrification == 6) conditionalColor = "#f9f4e5";
+                else if (hardship <= 50 && hardship > 25 && gentrification == 5) conditionalColor = "#d0ebc2";
+                else if (hardship <= 50 && hardship > 25 && gentrification == 4) conditionalColor = "#eeffe5";
+                else if (hardship <= 50 && hardship > 25 && gentrification == 3) conditionalColor = "#e5f6ff";
+                else if (hardship <= 50 && hardship > 25 && gentrification == 2) conditionalColor = "#ffffe5";
+                else if (hardship <= 50 && hardship > 25 && gentrification == 1) conditionalColor = "#ffffc7";
+                else if (hardship <= 25 && gentrification == 6) conditionalColor = "#85c763";
+                else if (hardship <= 25 && gentrification == 5) conditionalColor = "#cdf768";
+                else if (hardship <= 25 && gentrification == 2) conditionalColor = "#f7f768";
+                else if (hardship <= 25 && gentrification == 1) conditionalColor = "#f6f76f";
+                */
+                
+                if (hardship > 75 && gentrification == 9) conditionalColor = "#2c2416";
+                else if (hardship > 75 && gentrification == 8) conditionalColor = "#423721";
+                else if (hardship > 75 && gentrification == 7) conditionalColor = "#4d493d";
+                else if (hardship > 75 && gentrification == 4) conditionalColor = "#213142";
+                else if (hardship > 75 && gentrification == 3) conditionalColor = "#3d4b52";
+                else if (hardship <= 75 && hardship > 50 && gentrification == 9) conditionalColor = "#504228";
+                else if (hardship <= 75 && hardship > 50 && gentrification == 8) conditionalColor = "#79643c";
+                else if (hardship <= 75 && hardship > 50 && gentrification == 7) conditionalColor = "#8d8670";
+                else if (hardship <= 75 && hardship > 50 && gentrification == 5) conditionalColor = "#7d9570";
+                else if (hardship <= 75 && hardship > 50 && gentrification == 4) conditionalColor = "#708896";
+                else if (hardship <= 50 && hardship > 25 && gentrification == 6) conditionalColor = "#6ea452";
+                else if (hardship <= 50 && hardship > 25 && gentrification == 5) conditionalColor = "#aacb98";
+                else if (hardship <= 50 && hardship > 25 && gentrification == 4) conditionalColor = "#527aa5";
+                else if (hardship <= 50 && hardship > 25 && gentrification == 3) conditionalColor = "#98bacc";
+                else if (hardship <= 50 && hardship > 25 && gentrification == 2) conditionalColor = "#cccc98";
+                else if (hardship <= 50 && hardship > 25 && gentrification == 1) conditionalColor = "#cbcc5c";
+                else if (hardship <= 25 && gentrification == 6) conditionalColor = "#85c763";
+                else if (hardship <= 25 && gentrification == 5) conditionalColor = "#cdf6b8";
+                else if (hardship <= 25 && gentrification == 2) conditionalColor = "#f7f7b8";
+                else if (hardship <= 25 && gentrification == 1) conditionalColor = "#f6f76f";
+
                 else conditionalColor = "#555666";
                 return {    color: "#996184",
                             weight: 1,
                             fillColor: conditionalColor,
-                            fillOpacity: .6 };
+                            fillOpacity: .8 };
                         },
                 onEachFeature: function (feature, layer){
            layer.bindPopup( "Neighborhood: " + feature.properties.CA + "<br/>" + "Hardship Index Score: " + feature.properties.HI + "<br/>" + "Gentrification Index: " + feature.properties.GentrificationNumber )
@@ -138,7 +169,7 @@
                 return {    color: "#996184",
                     weight: 1,
                     fillColor: conditionalColor,
-                    fillOpacity: .6 };
+                    fillOpacity: .8 };
             },
             onEachFeature: function (feature, layer){
                 layer.bindPopup( "Neighborhood: " + feature.properties.CA + "<br/>" + "Gentrification Index: " + feature.properties.GentrificationNumber )
@@ -160,7 +191,7 @@
                 return {    color: "#996184",
                     weight: 1,
                     fillColor: conditionalColor,
-                    fillOpacity: .6 };
+                    fillOpacity: .8 };
             },
             onEachFeature: function (feature, layer){
                 layer.bindPopup( "Neighborhood: " + feature.properties.CA + "<br/>" + "Hardship Index: " + feature.properties.HI )
